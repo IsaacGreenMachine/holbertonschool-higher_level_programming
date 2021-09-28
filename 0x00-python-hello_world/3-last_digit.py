@@ -12,4 +12,4 @@ else:
     if number % 10 != 0:
         print("less than 6 and not 0")
     else:
-        print("zero")
+        print("0")
