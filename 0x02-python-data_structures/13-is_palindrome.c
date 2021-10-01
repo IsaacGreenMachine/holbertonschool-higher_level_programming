@@ -10,18 +10,19 @@ listint_t *current;
 int pos = 0, stat = -1;
 if (head == NULL || *head == NULL)
 return (1);
-
 current = *head;
-while (0 == 0)
+while (current->next != NULL) 
 {
 /*check for even*/
 if (current->n == current->next->n)
 stat = checkPal(*head, pos, pos + 1);
 
 /*check for odd*/
+if (current->next->next != NULL)
+{
 if (current->n == current->next->next->n)
 stat = checkPal(*head, pos, pos + 2);
-
+}
 if (stat == 1)
 return (1);
 
@@ -31,6 +32,7 @@ return (0);
 current = current->next;
 pos++;
 }
+return (0);
 }
 
 /**
