@@ -11,7 +11,7 @@ int pos = 0, stat = -1;
 if (head == NULL || *head == NULL)
 return (1);
 current = *head;
-while (current->next != NULL) 
+while (current->next != NULL)
 {
 /*check for even*/
 if (current->n == current->next->n)
