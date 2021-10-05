@@ -6,6 +6,8 @@ def roman_to_int(roman_string):
     a = r.get(roman_string[i])
     if i < len(roman_string) - 1:
         b = r.get(roman_string[i + 1])
+    if a == None or b == None:
+        return 0
     while i < len(roman_string) - 1:
         while i < len(roman_string) - 1 and a < b:
             sum -= r.get(roman_string[i])
