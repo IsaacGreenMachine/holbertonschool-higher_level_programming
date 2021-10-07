@@ -4,4 +4,4 @@ for i in range(100):
         sep = "\n"
     else:
         sep = ", "
-    print("{}{}".format(i, sep), end="")
+    print("{:02d}{}".format(i, sep), end="")
