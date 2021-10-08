@@ -1,0 +1,21 @@
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Test Cases:
+
+    >>> text_indentation("This is a test. Testing 1 2 3")
+    This is a test.
+    <BLANKLINE>
+    Testing 1 2 3
+
+    >>> text_indentation(1)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    ...
+    TypeError: text must be a string
+
+
+

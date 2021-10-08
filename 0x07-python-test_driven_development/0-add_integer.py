@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the module for a simple addition function that took way too long to make."""
+"""This is the module for a simple addition function."""
 
 
 def add_integer(a, b=98):
