@@ -9,5 +9,5 @@ class MyList(list):
         super().__init__()
 
     def print_sorted(self):
-        super().sort()
-        print(self)
+        a = list(self)
+        print(sorted(a))
