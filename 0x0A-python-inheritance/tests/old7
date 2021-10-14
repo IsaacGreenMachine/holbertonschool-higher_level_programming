@@ -1,0 +1,33 @@
+
+Import MyList:
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+set bg to a baseGeometry
+    >>> bg = BaseGeometry()
+
+Tests:
+
+CHECK AGAINST LIST    
+    >>> bg.integer_validator("test", [1, 4, 9, -3])
+    Traceback (most recent call last):
+    ...
+    TypeError: test must be an integer
+
+CHECK AGAINST STRING
+    >>> bg.integer_validator("test", "this")
+    Traceback (most recent call last):
+    ...
+    TypeError: test must be an integer
+
+CHECK AGAINST EMPTY
+    >>> bg.integer_validator("test", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: test must be an integer
+
+CHECK AGAINST NEGATIVE
+    >>> bg.integer_validator("test", -3)
+    Traceback (most recent call last):
+    ...
+    [ValueError: test must be greater than 0
