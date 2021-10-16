@@ -11,10 +11,10 @@ class Student:
 
     def to_json(self, attrs=None):
         if attrs is not None and all(isinstance(x, str) for x in attrs):
-            attList = []
+            attList = {}
             for v in vars(self):
                 if v in self.__dict__:
-                    attList.append(v)
+                    attList[v] = self.__dict__[v]
             return attList
         else:
             return vars(self)
