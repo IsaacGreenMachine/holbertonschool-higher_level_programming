@@ -13,8 +13,8 @@ class Student:
         if attrs is not None and all(isinstance(x, str) for x in attrs):
             attList = {}
             for v in vars(self):
-                if v in self.__dict__:
-                    attList[v] = self.__dict__[v]
+                if v in attrs:
+                    attList.update({v: self.__dict__[v]})
             return attList
         else:
             return vars(self)
