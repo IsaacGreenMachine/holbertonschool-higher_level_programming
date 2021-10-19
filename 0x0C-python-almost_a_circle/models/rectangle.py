@@ -79,7 +79,18 @@ class Rectangle(Base):
         if args and len(args) > 0:
             for a in range(len(args)):
                 setattr(self, attributes[a], args[a])
+
         else:
             for k in kwargs:
-                # what if key is "foo" or "ha" (not an attribute)?
-                setattr(self, k, kwargs.get(k))
+                if k in attributes:
+                    setattr(self, k, kwargs.get(k))
+    
+    def to_dictionary(self):
+        attributes = ["id", "width", "height", "x", "y"]
+        d = {}
+        for a in attributes:
+            d.update({a: getattr(self, a)})
+        return d
+
+
+
