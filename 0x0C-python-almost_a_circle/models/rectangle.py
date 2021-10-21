@@ -8,6 +8,14 @@ from models.base import Base
 class Rectangle(Base):
     """Child of Base with width, height, x, and y"""
 
+    def __init__(self, width, height, x=0, y=0, id=None):
+        "Rectangle init. uses Base init. validates values and sets them."
+        super().__init__(id)
+        self.__width = Rectangle.intChecker("width", width)
+        self.__height = Rectangle.intChecker("height", height)
+        self.__x = Rectangle.intChecker("x", x)
+        self.__y = Rectangle.intChecker("y", y)
+
     def intChecker(varName, val):
         if type(val) != int:
             raise TypeError("{} must be an integer".format(varName))
@@ -56,14 +64,6 @@ class Rectangle(Base):
     @y.setter
     def y(self, y):
         "validates y is int and sets it"
-        self.__y = Rectangle.intChecker("y", y)
-
-    def __init__(self, width, height, x=0, y=0, id=None):
-        "Rectangle init. uses Base init. validates values and sets them."
-        super().__init__(id)
-        self.__width = Rectangle.intChecker("width", width)
-        self.__height = Rectangle.intChecker("height", height)
-        self.__x = Rectangle.intChecker("x", x)
         self.__y = Rectangle.intChecker("y", y)
 
     def area(self):
