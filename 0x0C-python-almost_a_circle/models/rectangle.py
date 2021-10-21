@@ -1,138 +1,110 @@
 #!/usr/bin/python3
-"""
-Defines a rectangle object that using superclass Base
-"""
+"""this module contains a rectangle"""
+
+
 from models.base import Base
 
 
 class Rectangle(Base):
-    """
-    Instantiate the rectangle
-    """
+    """Child of Base with width, height, x, and y"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
+        """Rectangle init. uses Base init. validates values and sets them."""
         super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        self.__width = Rectangle.intChecker("width", width)
+        self.__height = Rectangle.intChecker("height", height)
+        self.__x = Rectangle.intChecker("x", x)
+        self.__y = Rectangle.intChecker("y", y)
+
+    def intChecker(varName, val):
+        """Checks if val is an int and above 0."""
+        if type(val) != int:
+            raise TypeError("{} must be an integer".format(varName))
+        elif val <= 0 and (varName == "width" or varName == "height"):
+            raise ValueError("{} must be > 0".format(varName))
+        elif val < 0 and (varName == "x" or varName == "y"):
+            raise ValueError("{} must be >= 0".format(varName))
+        else:
+            return val
 
     @property
     def width(self):
-        """
-        returns the width property
-        """
+        """returns width"""
         return self.__width
 
     @width.setter
-    def width(self, value):
-        """
-        sets the width property
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        elif value < 0:
-            raise ValueError("width must be > 0")
-        else:
-            self.__width = value
+    def width(self, width):
+        """validates width is int and sets it"""
+        self.__width = Rectangle.intChecker("width", width)
 
     @property
     def height(self):
-        """
-        returns the height
-        """
+        """returns height"""
         return self.__height
 
     @height.setter
-    def height(self, value):
-        """
-        sets the height
-        """
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        elif value < 0:
-            raise ValueError("height must be > 0")
-        self.__height = value
+    def height(self, height):
+        """validates height is int and sets it"""
+        self.__height = Rectangle.intChecker("height", height)
 
     @property
     def x(self):
-        """
-        returns x
-        """
+        """returns x"""
         return self.__x
 
     @x.setter
-    def x(self, value):
-        """
-        sets x
-        """
-        if type(value) is not int:
-            raise TypeError("x must be an integer")
-        elif value < 0:
-            raise ValueError("x must be >= 0")
-        self.__x = value
+    def x(self, x):
+        """validates x is int and sets it"""
+        self.__x = Rectangle.intChecker("x", x)
 
     @property
     def y(self):
-        """
-        returns y
-        """
-
+        """returns y"""
         return self.__y
 
     @y.setter
-    def y(self, value):
-        """
-        sets y
-        """
-        if type(value) is not int:
-            raise TypeError("y must be an integer")
-        elif value < 0:
-            raise ValueError("y must be >= 0")
-        else:
-            self.__y = value
+    def y(self, y):
+        """validates y is int and sets it"""
+        self.__y = Rectangle.intChecker("y", y)
 
     def area(self):
-        """
-        calculates and returns area of rectangle
-        """
-        return (self.height * self.width)
+        """returns area of rectangle"""
+        return self.__width*self.__height
 
     def display(self):
-        """
-        displays the rectangle with number signs
-        """
-        pound = "#"
-        rectangle_string = ""
-        for i in range(self.y):
-            rectangle_string += "\n"
-        for i in range(self.height):
-            for i in range(self.x):
-                rectangle_string += " "
-            for j in range(self.width):
-                rectangle_string += pound
-            if i < self.height - 1:
-                rectangle_string += "\n"
-        print(rectangle_string)
+        """prints self in hashtags with x, y offset"""
+        if self.__height != 0 and self.__width != 0:
+            for y in range(self.__y):
+                print()
+            for h in range(self.__height):
+                for x in range(self.__x):
+                    print(" ", end="")
+                for w in range(self.__width):
+                    print("#", end="")
+                if w == (self.__width - 1):
+                    print()
 
     def __str__(self):
-        """
-        displays the info for the rectangle as a string
-        """
-        display = "[Rectangle] ({}) {}/{} - {}/{}"
-        return (display.format(self.id, self.x, self.y, self.width,
-                               self.height))
+        """returns Rectangle def when print() or str() used"""
+        return "[Rectangle] ({}) {}/{} - {}/{}"\
+            .format(self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
-        """
-        updates a rectangle object
-        """
-        dimensions = ['id', 'width', 'height', 'x', 'y']
-        i = 0
-        if args:
-            for arg in args:
-                setattr(self, dimensions[i], args[i])
-                i += 1
-        if kwargs:
-            for key, arg in kwargs.items():
-                setattr(self, key, arg)
+        """updates and validates (setattr) attributes of instance"""
+        attributes = ["id", "width", "height", "x", "y"]
+        if args and len(args) > 0:
+            for a in range(len(args)):
+                setattr(self, attributes[a], args[a])
+
+        else:
+            for k in kwargs:
+                if k in attributes:
+                    setattr(self, k, kwargs.get(k))
+
+    def to_dictionary(self):
+        """returns dict representaiton of object"""
+        attributes = ["id", "width", "height", "x", "y"]
+        d = {}
+        for a in attributes:
+            d.update({a: getattr(self, a)})
+        return d
