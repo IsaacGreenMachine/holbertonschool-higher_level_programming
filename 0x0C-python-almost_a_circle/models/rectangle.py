@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 "this module contains a rectangle"
 
+
 from models.base import Base
 
 
 class Rectangle(Base):
     "Child of Base with width, height, x, and y"
+
     def intChecker(varName, val):
         if type(val) != int:
             raise TypeError("{} must be an integer".format(varName))
