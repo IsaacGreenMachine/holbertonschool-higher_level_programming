@@ -3,7 +3,6 @@
 
 
 import unittest
-import pep8
 from models.rectangle import Rectangle
 
 
@@ -29,13 +28,13 @@ class TestRectangle(unittest.TestCase):
     # Testing correct values happened during __init__
 
     def testInstantation(self):
-        self.assertEqual(self.r1.id, 3)
+        self.assertEqual(self.r1.id, 1)
         self.assertEqual(self.r1.width, 10)
         self.assertEqual(self.r1.height, 5)
         self.assertEqual(self.r1.x, 0)
         self.assertEqual(self.r1.y, 0)
 
-        self.assertEqual(self.r2.id, 4)
+        self.assertEqual(self.r2.id, 2)
         self.assertEqual(self.r2.width, 69)
         self.assertEqual(self.r2.height, 420)
         self.assertEqual(self.r2.x, 350)
@@ -47,7 +46,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r3.x, 18)
         self.assertEqual(self.r3.y, 24)
 
-        self.assertEqual(self.r4.id, 5)
+        self.assertEqual(self.r4.id, 3)
         self.assertEqual(self.r4.width, 50)
         self.assertEqual(self.r4.height, 150)
         self.assertEqual(self.r4.x, 0)
@@ -194,13 +193,3 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(R2.height, 4)
         self.assertEqual(R2.x, 3)
         self.assertEqual(R2.y, 2)
-
-    # Testing pep8 on the file
-
-    def testPep8(self):
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(
-            ['models/base.py', 'models/rectangle.py', 'models/square.py'])
-
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
