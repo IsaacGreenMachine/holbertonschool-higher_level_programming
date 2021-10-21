@@ -11,10 +11,10 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         "Rectangle init. uses Base init. validates values and sets them."
         super().__init__(id)
-        self.__width = Rectangle.intChecker("width", width)
-        self.__height = Rectangle.intChecker("height", height)
-        self.__x = Rectangle.intChecker("x", x)
-        self.__y = Rectangle.intChecker("y", y)
+        self.width = Rectangle.intChecker("width", width)
+        self.height = Rectangle.intChecker("height", height)
+        self.x = Rectangle.intChecker("x", x)
+        self.y = Rectangle.intChecker("y", y)
 
     def intChecker(varName, val):
         if type(val) != int:
