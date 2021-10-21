@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"This module defines class Base. Used for other shapes"
+"""This module defines class Base. Used for other shapes"""
 
 import json
 
 
 class Base:
-    "base of all classes in project. used to manage ids"
+    """base of all classes in project. used to manage ids"""
     __nb_objects = 0
 
     def __init__(self, id=None):
