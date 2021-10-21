@@ -48,10 +48,19 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         """creates a new object from given info"""
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1, 0, 0)
+
+        if cls.__name__ == "Square":
+            dummy = cls(1, 0, 0)
+
+        dummy.update(**dictionary)
+        return dummy
+        '''
         dum = cls(1, 1)
         dum.update(**dictionary)
         return dum
-
+        '''
     @classmethod
     def load_from_file(cls):
         """returns object from data stored in json format in type.json file"""
