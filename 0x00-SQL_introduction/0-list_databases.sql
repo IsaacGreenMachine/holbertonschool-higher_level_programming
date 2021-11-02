@@ -1,2 +1,2 @@
---Shows all databases in current scope
+-- Shows all databases in current scope
 SHOW DATABASES;
