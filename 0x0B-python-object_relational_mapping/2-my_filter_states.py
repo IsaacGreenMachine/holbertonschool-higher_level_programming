@@ -11,8 +11,8 @@ if __name__ == "__main__":
                          passwd=password, port=3306, host="localhost")
     dbcursor = db.cursor()
     dbcursor.execute("SELECT * FROM states "
-                     "WHERE states.name = %s "
-                     "ORDER BY id ASC", (checkWord,))
+                     "WHERE states.name = '{}' "
+                     "ORDER BY id ASC".format(checkWord))
     result = dbcursor.fetchall()
     for i in result:
         print(i)
