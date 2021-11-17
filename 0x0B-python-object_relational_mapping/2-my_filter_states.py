@@ -11,7 +11,7 @@ if __name__ == "__main__":
                          passwd=password, port=3306, host="localhost")
     dbcursor = db.cursor()
     dbcursor.execute("SELECT id, name FROM states "
-                     "WHERE states.name = '{}' "
+                     "WHERE BINARY states.name = '{}' "
                      "ORDER BY states.id ASC".format(checkWord))
     result = dbcursor.fetchall()
     for i in result:
