@@ -11,7 +11,7 @@ if __name__ == "__main__":
     dbcursor = db.cursor()
     dbcursor.execute("SELECT * FROM states "
                      "WHERE LEFT(states.name, 1) = 'N' "
-                     "ORDER BY id ASC")
+                     "ORDER BY states.id ASC")
     result = dbcursor.fetchall()
     for i in result:
         print(i)
