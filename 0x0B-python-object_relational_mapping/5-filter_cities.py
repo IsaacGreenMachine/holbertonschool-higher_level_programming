@@ -19,7 +19,6 @@ if __name__ == "__main__":
         print(result[i][0], end="")
         if i < len(result) - 1:
             print(", ", end="")
-        else:
-            print()
+    print()
     dbcursor.close()
     db.close()
