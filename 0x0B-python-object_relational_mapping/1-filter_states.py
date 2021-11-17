@@ -10,7 +10,7 @@ if __name__ == "__main__":
                          passwd=password, port=3306, host="localhost")
     dbcursor = db.cursor()
     dbcursor.execute("SELECT * FROM states "
-                     "WHERE LEFT(states.name, 1) = 'N' "
+                     "WHERE BINARY LEFT(states.name, 1) = 'N' "
                      "ORDER BY states.id ASC")
     result = dbcursor.fetchall()
     for i in result:
