@@ -13,7 +13,8 @@ if __name__ == "__main__":
     dbcursor.execute("SELECT cities.name " +
                      "FROM cities RIGHT JOIN states " +
                      "ON cities.state_id = states.id " +
-                     "WHERE states.name = %s", (checkWord,))
+                     "WHERE states.name = %s" +
+                     "ORDER BY cities.id ASC", (checkWord,))
     result = dbcursor.fetchall()
     for i in range(len(result)):
         print(result[i][0], end="")
