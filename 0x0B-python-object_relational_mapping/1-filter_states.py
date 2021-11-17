@@ -15,3 +15,6 @@ if __name__ == "__main__":
     result = dbcursor.fetchall()
     for i in result:
         print(i)
+    
+    dbcursor.close()
+    db.close()
