@@ -4,7 +4,7 @@
 if __name__ == "__main__":
     from sqlalchemy.orm import session, sessionmaker
     import sys
-    from model_state import State, Base
+    from model_state import Base, State
     from sqlalchemy import (create_engine)
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
