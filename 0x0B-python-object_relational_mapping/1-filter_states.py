@@ -3,6 +3,7 @@
 if __name__ == "__main__":
     import sys
     import MySQLdb
+
     userName = sys.argv[1]
     password = sys.argv[2]
     dataBaseName = sys.argv[3]
@@ -15,6 +16,5 @@ if __name__ == "__main__":
     result = dbcursor.fetchall()
     for i in result:
         print(i)
-
     dbcursor.close()
     db.close()
