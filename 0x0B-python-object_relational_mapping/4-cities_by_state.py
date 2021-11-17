@@ -10,9 +10,9 @@ if __name__ == "__main__":
                          passwd=password, port=3306, host="localhost")
     dbcursor = db.cursor()
     dbcursor.execute("SELECT cities.id, cities.name, states.name " +
-                     "FROM cities RIGHT JOIN states " +
+                     "FROM cities INNER JOIN states " +
                      "ON cities.state_id = states.id " +
-                     "ORDER BY id ASC")
+                     "ORDER BY cities.id ASC")
     result = dbcursor.fetchall()
     for i in result:
         print(i)
