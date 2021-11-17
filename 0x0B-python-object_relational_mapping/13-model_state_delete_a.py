@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""lists all cities from the database hbtn_0e_4_usa by state"""
+"""deletes all State objects with a name containing the letter a"""
 
 if __name__ == "__main__":
     from sqlalchemy.orm import session, sessionmaker
