@@ -2,6 +2,7 @@
 """This module defines class Base. Used for other shapes"""
 
 import json
+import turtle
 
 
 class Base:
@@ -68,3 +69,40 @@ class Base:
                 return objlist
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        left = -turtle.window_width()/2 + 5
+        right = turtle.window_width()/2 - 5
+        top = turtle.window_height()/2 - 5
+        bottom = turtle.window_height()/2 + 5
+        turtle.penup()
+        turtle.setpos(left, top)
+        turtle.pendown()
+        for r in list_rectangles:
+            if turtle.xcor() + r.width >= turtle.window_width()/2 - 5:
+                turtle.penup()
+                turtle.setpos(left, turtle.ycor - turtle.window_height/3)
+                turtle.pendown()
+            for i in range(2):
+                for j in range(r.width):
+                    turtle.forward(1)
+                turtle.right(90)
+                for k in range(r.height):
+                    turtle.forward(1)
+                turtle.right(90)
+            turtle.penup()
+            turtle.forward(r.width + 10)
+            turtle.pendown()
+        for s in list_squares:
+            if turtle.xcor() + s.width >= turtle.window_width()/2 - 5:
+                turtle.penup()
+                turtle.setpos(left, turtle.ycor - turtle.window_height/3)
+                turtle.pendown()
+            for i in range(4):
+                for j in range(s.width):
+                    turtle.forward(1)
+                turtle.right(90)
+            turtle.penup()
+            turtle.forward(s.width + 10)
+            turtle.pendown()
