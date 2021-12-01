@@ -4,6 +4,7 @@ from urllib import request
 if __name__ == "__main__":
     import requests
     import sys
-    email = {"email": sys.argv[2]}
-    p = requests.post(sys.argv[1], email)
+    email = sys.argv[2]
+    data = {"email": email}
+    p = requests.post(sys.argv[1], data)
     print(p.text)
