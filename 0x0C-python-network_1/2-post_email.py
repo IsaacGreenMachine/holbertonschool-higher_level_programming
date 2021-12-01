@@ -9,3 +9,4 @@ data = data.encode('ascii')
 req = request.Request(url, data)
 with request.urlopen(req) as response:
     html = response.read()
+    print(html.decode('utf-8'))
