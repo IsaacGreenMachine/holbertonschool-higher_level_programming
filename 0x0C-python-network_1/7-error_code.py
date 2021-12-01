@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""sends request to URL and displays the X-Request-Id"""
+"""requests from URL with error handling"""
 if __name__ == "__main__":
     import requests
     import sys
