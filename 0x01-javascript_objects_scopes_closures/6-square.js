@@ -7,7 +7,7 @@ class Square extends FiveSquare {
     super(size, size);
   }
 
-  charPrint (c) {
+  charPrint (c = 'X') {
     if (!c) {
       c = 'X';
     }
