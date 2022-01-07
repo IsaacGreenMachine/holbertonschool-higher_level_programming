@@ -5,6 +5,8 @@ for (let i = 2; i < process.argv.length; i++) {
   if (parseInt(process.argv[i]) > bigBoy) {
     medBoy = bigBoy;
     bigBoy = parseInt(process.argv[i]);
+  } else if (parseInt(process.argv[i]) < bigBoy && parseInt(process.argv[i]) > medBoy) {
+    medBoy = parseInt(process.argv[i]);
   }
 }
 console.log(medBoy);
